@@ -10,11 +10,14 @@ import com.shsxt.crm.vo.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author lynn
  */
 @Service
+@SuppressWarnings("all")
 public class UserService extends BaseService<User,Integer> {
     @Autowired
     private UserMapper userMapper;
@@ -49,6 +52,7 @@ public class UserService extends BaseService<User,Integer> {
         AssertUtil.isTrue(StringUtils.isBlank(userPwd),"用户密码不能为空");
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public void updateUserPassword(Integer userId,String oldPassword,String newPassword,String confirmPassword){
         /**
          * 1.参数校验
@@ -61,10 +65,10 @@ public class UserService extends BaseService<User,Integer> {
          * 3.执行更新
          */
         checkParams(userId,oldPassword,newPassword,confirmPassword);
-
-
-
-
+        User user = selectByPrimaryKey(userId);
+        user.setUserPwd(Md5Util.encode(newPassword));
+        Integer row = updateByPrimaryKeySelective(user);
+        AssertUtil.isTrue(row<1,"密码更新失败");
     }
 
     private void checkParams(Integer userId, String oldPassword, String newPassword, String confirmPassword) {

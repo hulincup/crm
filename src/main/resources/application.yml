@@ -18,6 +18,7 @@ spring:
     content-type: text/html
     charset: UTF-8
     template-loader-path: classpath:/views/
+
 ##mybatis配置
 mybatis:
   mapper-locations: classpath:/mappers/*.xml

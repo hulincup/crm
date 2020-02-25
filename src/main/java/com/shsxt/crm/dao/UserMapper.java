@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 /**
  * @author lynn
  */
-@Repository
+//@Repository
 public interface UserMapper extends BaseMapper<User,Integer> {
 
     User queryUserByUserName(String userName);
