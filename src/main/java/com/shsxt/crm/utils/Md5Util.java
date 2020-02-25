@@ -19,7 +19,8 @@ public class Md5Util {
 	
 	
 	public static void main(String[] args) {
-		System.out.println(encode("123456"));
+		System.out.println(encode("123"));
+		//ICy5YqxZB1uWSwcVLSNLcA==
 	}
 
 }
