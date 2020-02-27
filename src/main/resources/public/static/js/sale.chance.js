@@ -83,8 +83,11 @@ function saveOrUpdateSaleChance() {
         success:function (data) {
             data =JSON.parse(data);
             if(data.code==200) {
+                //关闭对话框
                 closeSaleChanceDialog();
+                //更新操作
                 searchSaleChance();
+                //清空表单数据
                 clearFormData();
             }
         }

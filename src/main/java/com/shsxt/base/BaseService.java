@@ -1,11 +1,18 @@
 package com.shsxt.base;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
+@SuppressWarnings("all")
 public abstract class BaseService<T,ID> {
-
+    /**
+     * 调用dao层的方法
+     */
     @Autowired
     private BaseMapper<T,ID> baseMapper;
 
@@ -98,5 +105,17 @@ public abstract class BaseService<T,ID> {
      */
     public Integer deleteBatch(ID[] ids) throws DataAccessException{
         return baseMapper.deleteBatch(ids);
+    }
+
+    /**
+     *
+     */
+    public Map<String,Object> queryByParamsForDataGrid(BaseQuery baseQuery){
+        Map<String,Object> result = new HashMap<>();
+        PageHelper.startPage(baseQuery.getPage(),baseQuery.getRows());
+        PageInfo<T> pageInfo = new PageInfo<>(selectByParams(baseQuery));
+        result.put("total",pageInfo.getTotal());
+        result.put("rows",pageInfo.getList());
+        return result;
     }
 }
