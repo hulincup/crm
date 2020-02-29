@@ -39,18 +39,17 @@
     <h3 class="form-title">Crm登录</h3>
     <div class="alert alert-danger display-hide">
         <button class="close" data-close="alert"></button>
-        <span>
-			用户名</span>
+        <span>用户名</span>
     </div>
     <div class="form-group">
         <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
         <label class="control-label visible-ie8 visible-ie9">用户名</label>
-        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"
+        <input id="userName" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"
                placeholder="用户名" name="userName"/>
     </div>
     <div class="form-group">
         <label class="control-label visible-ie8 visible-ie9">密码</label>
-        <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off"
+        <input id="userPwd" class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off"
                placeholder="密码" name="password"/>
     </div>
     <div class="form-actions">

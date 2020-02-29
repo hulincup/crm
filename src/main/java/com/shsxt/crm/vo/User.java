@@ -1,6 +1,9 @@
 package com.shsxt.crm.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
+import java.util.List;
 
 public class User {
     private Integer id;
@@ -16,10 +19,39 @@ public class User {
     private String phone;
 
     private Integer isValid;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createDate;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateDate;
+
+    private List<Integer> roleIds;
+
+    /**
+     * 因为查询的是字符串所以只能用字符串接收
+     * 数据库表对应的bean对象字段只能比表多或者一样
+     * 不能比表少,不然接收不到数据
+     */
+    private String rids;
+
+    public String getRids() {
+        return rids;
+    }
+
+    public void setRids(String rids) {
+        this.rids = rids;
+    }
+
+    /**
+     * 用来接收前台选择的角色id
+     * @return
+     */
+    public List<Integer> getRoleIds() {
+        return roleIds;
+    }
+
+    public void setRoleIds(List<Integer> roleIds) {
+        this.roleIds = roleIds;
+    }
 
     public Integer getId() {
         return id;

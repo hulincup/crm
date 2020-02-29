@@ -1,6 +1,8 @@
 function login() {
-    var userName=$("input[name='userName']").val();
-    var userPwd=$("input[name='password']").val();
+    /*var userName=$("input[name='userName']").val();
+    var userPwd=$("input[name='password']").val();*/
+    var userName=$("#userName").val();
+    var userPwd=$("#userPwd").val();
 
     if(isEmpty(userName)){
         alert("请输入用户名!");
