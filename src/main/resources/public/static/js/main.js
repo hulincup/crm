@@ -54,3 +54,7 @@ function modifyPassword() {
         }
     })
 }
+
+function closePasswordModifyDialog() {
+    closeDialog("#fm");
+}

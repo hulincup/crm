@@ -24,12 +24,20 @@ function saveOrUpdateRecode(saveUrl,updateUrl,dlgId,search,clearData) {
     if(!(isEmpty($("input[name='id']").val()))){
         url = updateUrl;
     }
+    /**
+     *使普通表单成为ajax提交的表单
+     * 提交的参数为表单的内容
+     */
     $("#fm").form("submit",{
         url:url,
         onSubmit:function () {
             return $("#fm").form("validate");
         },
         success:function (data) {
+            /**
+             * Json.parse()将json格式的字符串转换成Json对象
+             * @type {any}
+             */
             data =JSON.parse(data);
             if(data.code==200){
                 closeDialog(dlgId);
@@ -83,14 +91,24 @@ function deleteRecode(dataGridId,deleteUrl,search) {
     }
     $.messager.confirm("来自crm","确定删除选中的记录?",function (r) {
         if(r){
+            /*
+            确认删除走aja请求,后台对应的url删除数据库相关信息
+             */
             $.ajax({
                 type:"post",
                 url:deleteUrl,
                 data:{
+                    /**
+                     * 得到当前行的id并作为参数传到后台
+                     * 调用后台的delete方法
+                     */
                     id:rows[0].id
                 },
                 dataType:"json",
                 success:function (data) {
+                    /**
+                     * data是后台传过来的ResultInfo对象
+                     */
                     if(data.code==200){
                         search();
                     }else{

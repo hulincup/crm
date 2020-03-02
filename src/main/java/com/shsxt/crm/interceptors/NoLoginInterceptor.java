@@ -23,7 +23,12 @@ public class NoLoginInterceptor extends HandlerInterceptorAdapter {
             response.sendRedirect(request.getContextPath()+"/index");
             return false;
         }*/
-
+        /**
+         * 判断userId是否存在,如果存在并且可以在数据库查询到相关记录那么则证明该用户登录过,因为cookie存在
+         * cookie存在的前提是用户登录成功,cookie里的信息是登录时向后台发送ajax请求,请求成功后返回的data作为
+         * 回调函数success的参数,通过data.result拿到UserModel里面的用户信息
+         * 当访问被拦截页面 若存在userId那么说明之前登陆过就直接放行
+         */
         if(userId==0 || null==userService.selectByPrimaryKey(userId)){
             throw  new NoLoginException();
         }

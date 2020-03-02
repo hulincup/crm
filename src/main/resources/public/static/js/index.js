@@ -27,7 +27,9 @@ function login() {
                 var result =data.result;
                 /**
                  * 写入cookie 到浏览器 省去了服务器端创建cookie,通过response.addCookie()发送给浏览器,并且
-                 * 通过Cookie[] cookies = request.getCookies()获取cookie的过程
+                 * 通过Cookie[] cookies = request.getCookies()获取cookie的过程,封装的jquery.cookie直接将
+                 * cookie存在浏览器
+                 * data就是后台传过来的resultInfodate.result,拿到的是后台存在UserModel信息
                  */
                 $.cookie("userIdStr",result.userIdStr);
                 $.cookie("userName",result.userName);
