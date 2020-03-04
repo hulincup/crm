@@ -108,7 +108,11 @@ public abstract class BaseService<T,ID> {
     }
 
     /**
-     *
+     *BaseQuery子类继承了BaseQuery之后也可以作为参数传进来
+     * 在每次新的查询方法上 都要重写mapper.xml中的查询语句
+     * selectByParams 通过BaseQuery子类中的查询条件查询到的
+     * javaBean对象再通过new PageInfo()生成一个PageInfo对象
+     *交给前台 进行分页显示操作
      */
     public Map<String,Object> queryByParamsForDataGrid(BaseQuery baseQuery){
         Map<String,Object> result = new HashMap<>();

@@ -81,7 +81,6 @@ function delCusDevPlan() {
     })
 }
 
-
 function updateSaleChanceDevResult(status) {
     $.ajax({
         type:"post",
