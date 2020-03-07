@@ -13,7 +13,7 @@ function saveCustomerRep() {
 }
 
 function delCustomerRep() {
-    var rows=$("#dg").edatagrid("getSelections");
+    var rows=$("#dg").datagrid("getSelections");
     if(rows.length==0){
         $.messager.alert("来自crm","请选择确认删除的数据记录!","error");
         return;
@@ -27,7 +27,7 @@ function delCustomerRep() {
 }
 
 function confirmLoss() {
-    var rows=$("#dg").edatagrid("getSelections");
+    var rows=$("#dg").datagrid("getSelections");
     if(rows.length==0){
         $.messager.alert("来自crm","请选择确认流失的数据记录!","error");
         return;

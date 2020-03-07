@@ -50,6 +50,6 @@ public class IndexController extends BaseController {
         request.getSession().setAttribute("permissions",permissions);
         List<ModuleDto> moduleDtos = moduleService.queryUserHasRoleHasModuleDtos(userId);
         request.getSession().setAttribute("modules",moduleDtos);
-        return "main_2.0";
+        return "main";
     }
 }

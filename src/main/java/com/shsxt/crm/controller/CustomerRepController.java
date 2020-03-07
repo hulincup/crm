@@ -1,9 +1,11 @@
 package com.shsxt.crm.controller;
 
 import com.shsxt.base.BaseController;
+import com.shsxt.crm.model.ResultInfo;
 import com.shsxt.crm.query.CustomerRepQuery;
 import com.shsxt.crm.service.CustomerLossService;
 import com.shsxt.crm.service.CustomerRepService;
+import com.shsxt.crm.vo.CustomerRep;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,4 +35,10 @@ public class CustomerRepController extends BaseController {
         return customerRepService.queryByParamsForDataGrid(customerRepQuery);
     }
 
+    @RequestMapping("save")
+    @ResponseBody
+    public ResultInfo saveCustomerReps(CustomerRep customerRep){
+        customerRepService.saveCustomerRep(customerRep);
+        return success("客户流失数据保存成功");
+    }
 }
