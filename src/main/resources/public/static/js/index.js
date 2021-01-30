@@ -14,13 +14,13 @@ function login() {
     }
 
     $.ajax({
-        type:"post",
-        url:ctx+"/user/login",
+        type:"post",//告诉后台自己的请求方式
+        url:ctx+"/user/login",//后台返回对应URL的资源给前台
         data:{
             userName:userName,
             userPwd:userPwd
         },
-        dataType:"json",
+        dataType:"json",//前台传递给后台的数据是json形式
         success:function (data) {
             console.log(data);
             if(data.code==200){

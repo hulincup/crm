@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,4 +53,6 @@ public class IndexController extends BaseController {
         request.getSession().setAttribute("modules",moduleDtos);
         return "main";
     }
+
+    //ArrayList
 }
